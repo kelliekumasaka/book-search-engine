@@ -9,7 +9,7 @@ const resolvers = {
               return User.findOne({ $or: [{ _id: context.id}, { username: context.username }], }).populate('savedBooks');
             }
             throw new AuthenticationError('You need to be logged in!');
-          },
+        },
     },
 
     Mutation: {
