@@ -21,27 +21,30 @@ const resolvers = {
 
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ $or: [{email: email}, {username: email}] });
-      
             if (!user) {
               throw new AuthenticationError('No user found with this email address');
             }
-      
             const correctPw = await user.isCorrectPassword(password);
-      
             if (!correctPw) {
               throw new AuthenticationError('Incorrect credentials');
             }
-      
             const token = signToken(user);
-      
             return { token, user };
         },
 
-        // saveBook: async(parent, {authors, description, title, bookId, image, link}, context) => {
-        //     if(context.user){
-        //         const book = await 
-        //     }
-        // }
+        saveBook: async(parent, {authors, description, title, bookId, image, link}, context) => {
+            if(context.user){
+                const book = await User.findByIdAndUpdate({_id:context.user._id},{
+                  $addToSet: {
+                    savedBooks: { authors:authors, description: description,title:title,bookId:bookId,image:image,link:link },
+                  },
+                },{
+                  new:true
+                })
+            }
+        },
+
+        
     }
 }
 
