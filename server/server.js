@@ -1,5 +1,5 @@
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express')
 const path = require('path');
 
 const { typeDefs, resolvers } = require('./schema');
@@ -14,10 +14,7 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-server.start()
-  .then(res=>{
-  server.applyMiddleware({ app });
-  })
+server.applyMiddleware({ app })
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
