@@ -36,13 +36,12 @@ const SignupForm = () => {
         }
       });
 
-      if (!response.ok) {
+      if (!response.data) {
+        console.log(err);
         throw new Error('something went wrong!');
       }
 
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      Auth.login(response.data.createUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
