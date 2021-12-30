@@ -1,4 +1,4 @@
-# Book Search Engine<br>![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+# Book Search Engine<br>![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
   ## About
   A website that allows the user to look for books and save them and mark them as read.
 

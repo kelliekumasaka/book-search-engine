@@ -30,6 +30,7 @@ const LoginForm = () => {
       const response = await login({
         variables: {...userFormData}
       });
+      console.log(response);
 
       if (!response.data) {
         console.log(error);
