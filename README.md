@@ -33,7 +33,7 @@
   
 
   ## License
-  This project is licensed under MIT.
+  This project is licensed under ISC.
 
   ## Questions
   Here is a link to my [GitHub](https://github.com/kelliekumasaka) or shoot me an [email](mailto:kelliek3@gmail.com).
