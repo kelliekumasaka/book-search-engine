@@ -40,7 +40,7 @@ const SearchBooks = () => {
 
       const { items } = await response.json();
 
-      const bookData = items.map((book) => ({
+      const bookToSave = items.map((book) => ({
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
         title: book.volumeInfo.title,
@@ -48,7 +48,7 @@ const SearchBooks = () => {
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
 
-      setSearchedBooks(bookData);
+      setSearchedBooks(bookToSave);
       setSearchInput('');
     } catch (err) {
       console.error(err);
@@ -68,13 +68,9 @@ const SearchBooks = () => {
     }
 
     try {
-      console.log(bookToSave.bookId);
       const response = await saveNewBook({
-        variables:{
-          bookData:bookToSave
-        }
+        variables:{ bookData: bookToSave }
       });
-      console.log(response);
 
       if (!response.data) {
         console.log(error);

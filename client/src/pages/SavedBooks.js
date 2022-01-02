@@ -24,7 +24,6 @@ const SavedBooks = () => {
     }
 
     try {
-      console.log(bookId);
       const response = await deleteBook({
         variables:{
           bookId:bookId
@@ -60,7 +59,7 @@ const SavedBooks = () => {
         </Jumbotron>
         <Container>
           <h2>
-            {userData.bookCount
+            {userData.bookCount || userData.bookId === null
               ? `Viewing ${userData.bookCount} saved ${userData.bookCount === 1 ? 'book' : 'books'}:`
               : 'You have no saved books!'}
           </h2>
